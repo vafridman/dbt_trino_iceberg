@@ -1,8 +1,4 @@
-{{
-    config(
-        materialized = 'ephemeral'
-    )
-}}
+{{ config(materialized="ephemeral") }}
 select
     custkey as customer_key,
     name as customer_name,
@@ -12,5 +8,4 @@ select
     acctbal as customer_account_balance,
     mktsegment as customer_market_segment_name,
     comment as customer_comment
-from
-    {{ source('tpch_raw', 'customer') }}
+from {{ source("tpch_raw", "customer") }}

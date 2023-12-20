@@ -1,27 +1,13 @@
+with
+    parts as (select * from {{ ref("stg_tpch_part") }}),
+    suppliers as (select * from {{ ref("stg_tpch_supplier") }}),
+    part_suppliers as (select * from {{ ref("stg_tpch_part_suppliers") }})
+select
 
-with parts as (
-    
-    select * from {{ ref('stg_tpch_part') }}
-
-),
-suppliers as (
-
-    select * from {{ ref('stg_tpch_supplier') }}
-
-),
-part_suppliers as (
-
-    select * from {{ ref('stg_tpch_part_suppliers') }}
-
-)
-select 
-
-    {{ dbt_utils.generate_surrogate_key(
-			['p.part_key', 
-			's.supplier_key']) }} 
-			as part_supplier_key,
-    --p.part_supplier_key,
-	p.part_key,
+    {{ dbt_utils.generate_surrogate_key(["p.part_key", "s.supplier_key"]) }}
+    as part_supplier_key,
+    -- p.part_supplier_key,
+    p.part_key,
     p.part_name,
     p.part_manufacturer_name,
     p.part_brand_name,
@@ -36,13 +22,7 @@ select
 
     ps.supplier_availabe_quantity,
     ps.supplier_cost_amount
-from
-    parts p
-    join
-    part_suppliers ps
-        on p.part_key = ps.part_key
-    join
-    suppliers s
-        on ps.supplier_key = s.supplier_key
-order by
-    p.part_key
+from parts p
+join part_suppliers ps on p.part_key = ps.part_key
+join suppliers s on ps.supplier_key = s.supplier_key
+order by p.part_key

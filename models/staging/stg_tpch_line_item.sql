@@ -1,8 +1,4 @@
-{{
-    config(
-        materialized = 'ephemeral'
-    )
-}}
+{{ config(materialized="ephemeral") }}
 select
     orderkey as order_key,
     partkey as part_key,
@@ -20,5 +16,4 @@ select
     shipinstruct as ship_instructions_desc,
     shipmode as ship_mode_name,
     comment as order_line_comment
-from
-    {{ source('tpch_raw', 'lineitem') }}
+from {{ source("tpch_raw", "lineitem") }}

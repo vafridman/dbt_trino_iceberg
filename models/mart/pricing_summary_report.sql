@@ -3,8 +3,7 @@
 This query reports the amount of business that was billed, shipped, and returned. 
 Full description:https://www.tpc.org/tpc_documents_current_versions/pdf/tpc-h_v3.0.1.pdf (Page 29)
 */
-
-select 
+select
     f.return_status_code,
     f.order_line_status_code,
     sum(f.quantity) as quantity,
@@ -17,10 +16,9 @@ select
     avg(f.discount_percentage) as avg_discount_percentage,
 
     sum(f.order_item_count) as order_item_count
-    
-from
-    {{ ref('fct_orders_items') }} f
+
+from {{ ref("fct_orders_items") }} f
 where
-    f.ship_date <= date_add('day', -90, date_parse('{{ var('highest_ship_date') }}', '%Y-%m-%d'))
-group by
-    1,2  
+    f.ship_date
+    <= date_add('day', -90, date_parse('{{ var(' highest_ship_date ') }}', '%Y-%m-%d'))
+group by 1, 2

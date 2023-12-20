@@ -1,8 +1,4 @@
-{{
-    config(
-        materialized = 'ephemeral'
-    )
-}}
+{{ config(materialized="ephemeral") }}
 select
     partkey as part_key,
     name as part_name,
@@ -13,5 +9,4 @@ select
     container as part_container_desc,
     retailprice as retail_price,
     comment as part_comment
-from
-    {{ source('tpch_raw', 'part') }}
+from {{ source("tpch_raw", "part") }}

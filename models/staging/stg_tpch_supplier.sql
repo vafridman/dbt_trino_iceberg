@@ -1,8 +1,4 @@
-{{
-    config(
-        materialized = 'ephemeral'
-    )
-}}
+{{ config(materialized="ephemeral") }}
 select
     suppkey as supplier_key,
     name as supplier_name,
@@ -11,5 +7,4 @@ select
     phone as supplier_phone_number,
     acctbal as supplier_account_balance,
     comment as supplier_comment
-from
-    {{ source('tpch_raw', 'supplier') }}
+from {{ source("tpch_raw", "supplier") }}
