@@ -36,3 +36,7 @@ models:
     materialized: table
     on_table_exists: drop
     file_format: iceberg
+    
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['dbt_trino_iceberg', 'dbt_utils']
