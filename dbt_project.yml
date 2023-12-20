@@ -7,7 +7,7 @@ config-version: 2
 
 vars:
   dbt_trino_iceberg:
-    'highest_ship_date': '1998-12-01'
+    highest_ship_date: '1998-12-01'
   
 # This setting configures which "profile" dbt uses for this project.
 profile: 'dbt_trino_iceberg'
