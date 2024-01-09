@@ -28,7 +28,7 @@ with
                 partition by s.supplier_region_key, s.part_key, s.supplier_cost_amount
                 order by s.supplier_account_balance desc
             ) as supplier_rank
-        from {{ ref("dim_part_suppliers") }} s
+        from {{ ref("gold_dim_part_suppliers") }} s
     )
 select s.*
 from parts_suppliers s

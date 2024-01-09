@@ -17,7 +17,7 @@ select
 
     sum(f.order_item_count) as order_item_count
 
-from {{ ref("fct_orders_items") }} f
+from {{ ref("gold_fct_orders_items") }} f
 where
     f.ship_date
     <= date_add('day', -90, date_parse('{{ var('highest_ship_date') }}', '%Y-%m-%d'))
