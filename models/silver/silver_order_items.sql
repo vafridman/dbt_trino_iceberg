@@ -1,6 +1,6 @@
 with
-    orders as (select * from {{ ref("stg_tpch_orders") }}),
-    line_items as (select * from {{ ref("stg_tpch_line_item") }})
+    orders as (select * from {{ ref("bronze_tpch__orders") }}),
+    line_items as (select * from {{ ref("bronze_tpch__line_item") }})
 select
 
     {{ dbt_utils.generate_surrogate_key(["o.order_key", "l.order_line_number"]) }}

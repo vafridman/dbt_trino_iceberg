@@ -1,6 +1,6 @@
 with
-    orders_items as (select * from {{ ref("int_order_items") }}),
-    parts_suppliers as (select * from {{ ref("stg_tpch_part_suppliers") }}),
+    orders_items as (select * from {{ ref("silver_order_items") }}),
+    parts_suppliers as (select * from {{ ref("bronze_tpch__part_suppliers") }}),
     final as (
         select
 

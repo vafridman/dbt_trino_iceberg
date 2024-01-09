@@ -1,9 +1,9 @@
 with
-    suppliers as (select * from {{ ref("stg_tpch_supplier") }}),
-    parts as (select * from {{ ref("stg_tpch_part") }}),
-    parts_suppliers as (select * from {{ ref("int_parts_suppliers") }}),
-    nations as (select * from {{ ref("stg_tpch_nation") }}),
-    regions as (select * from {{ ref("stg_tpch_region") }}),
+    suppliers as (select * from {{ ref("bronze_tpch__supplier") }}),
+    parts as (select * from {{ ref("bronze_tpch__part") }}),
+    parts_suppliers as (select * from {{ ref("silver_parts_suppliers") }}),
+    nations as (select * from {{ ref("bronze_tpch__nation") }}),
+    regions as (select * from {{ ref("bronze_tpch__region") }}),
     final as (
 
         select

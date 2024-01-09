@@ -1,7 +1,7 @@
 with
-    suppliers as (select * from {{ ref("stg_tpch_supplier") }}),
-    nations as (select * from {{ ref("stg_tpch_nation") }}),
-    regions as (select * from {{ ref("stg_tpch_region") }})
+    suppliers as (select * from {{ ref("bronze_tpch__supplier") }}),
+    nations as (select * from {{ ref("bronze_tpch__nation") }}),
+    regions as (select * from {{ ref("bronze_tpch__region") }})
 select
     s.supplier_key,
     s.supplier_name,

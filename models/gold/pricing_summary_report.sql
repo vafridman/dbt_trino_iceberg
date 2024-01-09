@@ -20,5 +20,5 @@ select
 from {{ ref("fct_orders_items") }} f
 where
     f.ship_date
-    <= date_add('day', -90, date_parse('{{ var(' highest_ship_date ') }}', '%Y-%m-%d'))
+    <= date_add('day', -90, date_parse('{{ var('highest_ship_date') }}', '%Y-%m-%d'))
 group by 1, 2

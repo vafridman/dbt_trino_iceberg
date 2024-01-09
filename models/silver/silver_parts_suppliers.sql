@@ -1,7 +1,7 @@
 with
-    parts as (select * from {{ ref("stg_tpch_part") }}),
-    suppliers as (select * from {{ ref("stg_tpch_supplier") }}),
-    part_suppliers as (select * from {{ ref("stg_tpch_part_suppliers") }})
+    parts as (select * from {{ ref("bronze_tpch__part") }}),
+    suppliers as (select * from {{ ref("bronze_tpch__supplier") }}),
+    part_suppliers as (select * from {{ ref("bronze_tpch__part_suppliers") }})
 select
 
     {{ dbt_utils.generate_surrogate_key(["p.part_key", "s.supplier_key"]) }}
