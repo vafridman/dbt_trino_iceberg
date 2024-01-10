@@ -39,4 +39,4 @@ models:
     
 dispatch:
   - macro_namespace: dbt_utils
-    search_order: ['dbt_trino_iceberg', 'dbt_utils']
+    search_order: ['dbt_trino_iceberg', 'trino_utils', 'dbt_utils']
